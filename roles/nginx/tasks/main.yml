@@ -21,10 +21,16 @@
   with_dict: "{{ sites }}"
   notify: restart nginx
 
-- name: de-activate default nginx sites
+- name: get active sites
+  shell: ls -1 /etc/nginx/sites-enabled
+  register: active
+
+- name: de-activate nginx sites
   file:
-    path: /etc/nginx/sites-enabled/default
+    path: /etc/nginx/sites-enabled/{{ item }}
     state: absent
+  with_items: active.stdout_lines
+  when: item not in sites
   notify: restart nginx
 
 - name: activate demo nginx sites

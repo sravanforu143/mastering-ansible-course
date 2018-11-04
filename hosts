@@ -8,6 +8,6 @@ app02
 [database]
 db01
 
-[controlGroup]
+[control]
 control ansible_connection=local
 

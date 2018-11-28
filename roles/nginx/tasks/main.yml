@@ -3,7 +3,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items:
     - python-httplib2
 
@@ -11,7 +10,6 @@
   apt:
     name: nginx
     state: present
-    update_cache: yes
 
 - name: configure nginx sites
   template:

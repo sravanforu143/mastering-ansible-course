@@ -3,7 +3,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items:
     - python-mysqldb
 
@@ -11,7 +10,6 @@
   apt:
     name: mysql-server
     state: present
-    update_cache: yes
 
 - name: ensure mysql listening on all ports
   lineinfile:
